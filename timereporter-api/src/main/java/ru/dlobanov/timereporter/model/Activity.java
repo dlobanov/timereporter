@@ -1,4 +1,4 @@
 package ru.dlobanov.timereporter.model;
 
-ublic interface Activity {
+public interface Activity {
 }
