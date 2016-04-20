@@ -1,0 +1,16 @@
+apply plugin: 'ear'
+
+dependencies {
+    deploy project(path: ':timereporter-web', configuration: 'archives')
+    deploy project(path: ':timereporter-services', configuration: 'archives')
+    earlib project(path: ':timereporter-api', configuration: 'archives')
+}
+
+ear {
+    deploymentDescriptor {
+        applicationName = "TimeReporter"
+        initializeInOrder = true
+        displayName = "Time Reporter"
+        description = "This is my Time Reporter web-application"
+    }
+}

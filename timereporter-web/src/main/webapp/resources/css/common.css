@@ -1,0 +1,54 @@
+body {
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+
+#header {
+	background: #f8f8f8;
+	width: 100%;
+	height: 94px;
+	top: 0;
+	position: fixed;
+}
+
+#footer {
+	background: #f8f8f8;
+	width: 100%;
+	height: 30px;
+	position: fixed;
+	bottom: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#menu {
+	background: #f1f1f1;
+	position: fixed;
+	top: 94px;
+	bottom: 30px;
+	width: 30%;
+	overflow-x: auto;
+}
+
+#content {
+	background: #f1f1f1;
+	position: fixed;
+	top: 94px;
+	bottom: 30px;
+	left: 30%;
+	width: 70%;
+	overflow: auto;
+}
+
+.header_text {
+	font-family: cursive;
+	text-align: center;
+	margin-top: 4px;
+}
+
+.footer_text {
+	font-family: cursive;
+	text-align: right;
+	margin-top: 4px;
+}

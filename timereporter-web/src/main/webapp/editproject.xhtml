@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Edit project</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/common.xhtml">
+		<ui:define name="content">
+			Project edition: #{projectBean.alias}
+			<h:form>
+			    <h:inputHidden value="#{projectBean.alias}"/>
+				<h:panelGrid columns="2" id="loginPanel">
+				  Alias : <h:inputText id="alias" disabled="true" value="#{projectBean.alias}"/>
+                  Name : <h:inputText id="name" value="#{projectBean.name}" />
+                  Description : <h:inputText id="description" value="#{projectBean.description}" />
+                  Manager : 
+                  <h:selectOneMenu id="manager" value="#{projectBean.manager}">
+						<f:selectItems value="#{projectController.employees}" var="e" itemLabel="#{e.name}" itemValue="#{e.login}" />
+					</h:selectOneMenu>
+				</h:panelGrid>
+				<h:commandButton value="Edit project" action="administration" actionListener="#{projectController.createOrUpdateProject}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

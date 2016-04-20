@@ -1,0 +1,12 @@
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax', name: 'javaee-api', version: '7.0'
+    compile project(':timereporter-api')
+}
