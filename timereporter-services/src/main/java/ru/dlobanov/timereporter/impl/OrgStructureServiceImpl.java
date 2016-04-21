@@ -44,11 +44,11 @@ public class OrgStructureServiceImpl implements OrgStructureService {
 
     @SuppressWarnings("unchecked")
     public List<Project> getProjects() {
-        return entityManager.createQuery("FROM Project").getResultList();
+        return entityManager.createQuery("FROM ProjectImpl").getResultList();
     }
     
     public Project getProject(String alias) {
-        return entityManager.find(Project.class, alias);
+        return entityManager.find(ProjectImpl.class, alias);
     }
 
     public List<OrgUnit> getUnits(Project project) {
@@ -63,7 +63,7 @@ public class OrgStructureServiceImpl implements OrgStructureService {
 
     @SuppressWarnings("unchecked")
     public List<Employee> getEmployees() {
-        return entityManager.createQuery("FROM Employee").getResultList();
+        return entityManager.createQuery("FROM EmployeeImpl").getResultList();
     }
 
     public EmployeeRole addRole(String name) {

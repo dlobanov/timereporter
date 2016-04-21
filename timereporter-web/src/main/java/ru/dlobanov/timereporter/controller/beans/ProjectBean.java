@@ -4,12 +4,13 @@ import ru.dlobanov.timereporter.OrgStructureService;
 import ru.dlobanov.timereporter.model.Project;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
+import java.io.Serializable;
 
 @ManagedBean
-public class ProjectBean {
+public class ProjectBean implements Serializable {
     
     private String alias;
     
@@ -19,7 +20,7 @@ public class ProjectBean {
     
     private String manager;
     
-    @Inject
+    @EJB
     private OrgStructureService orgStructureService;
     
     @PostConstruct
@@ -75,10 +76,6 @@ public class ProjectBean {
     
     public void setManager(String manager) {
         this.manager = manager;
-    }
-    
-    public void setOrgStructureService(OrgStructureService orgStructureService) {
-        this.orgStructureService = orgStructureService;
     }
     
     public OrgStructureService getOrgStructureService() {

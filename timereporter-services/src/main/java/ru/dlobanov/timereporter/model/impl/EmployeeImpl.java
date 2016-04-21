@@ -7,11 +7,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(schema = "public", name = "employee")
+@Table(schema = "timereporter", name = "employee")
 public class EmployeeImpl implements Employee {
 
     @Id
@@ -37,8 +38,8 @@ public class EmployeeImpl implements Employee {
     private OrgUnitImpl unit;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "employee_role_map", joinColumns = @JoinColumn(name = "employee_login", referencedColumnName = "login"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "rolename"))
-    private Set<EmployeeRoleImpl> roles;
+    @JoinTable(schema = "timereporter", name = "employee_role_map", joinColumns = @JoinColumn(name = "employee_login", referencedColumnName = "login"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "rolename"))
+    private Set<EmployeeRoleImpl> roles = new HashSet<>();
 
     public OrgUnitImpl getUnit() {
         return unit;

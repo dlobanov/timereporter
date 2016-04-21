@@ -9,11 +9,12 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
-public class ProjectController {
+public class ProjectController implements Serializable {
 
     @EJB
     private OrgStructureService orgStructureService;

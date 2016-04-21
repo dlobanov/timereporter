@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(schema = "public", name = "unit")
+@Table(schema = "timereporter", name = "unit")
 public class OrgUnitImpl implements OrgUnit, Serializable {
 
     private static final long serialVersionUID = 1L;

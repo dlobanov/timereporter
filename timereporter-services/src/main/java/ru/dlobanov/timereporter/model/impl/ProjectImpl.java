@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(schema = "public", name = "project")
+@Table(schema = "timereporter", name = "project")
 public class ProjectImpl implements Project, Serializable {
 
     private static final long serialVersionUID = 1L;

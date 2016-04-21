@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(schema = "public", name = "employeerole")
+@Table(schema = "timereporter", name = "employeerole")
 public class EmployeeRoleImpl implements EmployeeRole, Serializable, Comparable<EmployeeRoleImpl> {
     
     private static final long serialVersionUID = 1L;

@@ -1,7 +1,6 @@
 package ru.dlobanov.timereporter.install;
 
 import org.jboss.security.auth.spi.Util;
-import ru.dlobanov.timereporter.model.EmployeeRole;
 import ru.dlobanov.timereporter.model.impl.EmployeeImpl;
 import ru.dlobanov.timereporter.model.impl.EmployeeRoleImpl;
 import ru.dlobanov.timereporter.model.impl.OrgUnitImpl;
@@ -46,7 +45,7 @@ public class Installer {
 
         employeeRole.setRoleName(role);
 
-        if (entityManager.find(EmployeeRole.class, employeeRole.getRoleName()) == null) {
+        if (entityManager.find(EmployeeRoleImpl.class, employeeRole.getRoleName()) == null) {
             entityManager.persist(employeeRole);
         }
 
@@ -61,7 +60,7 @@ public class Installer {
         employee = new EmployeeImpl();
         employee.setLogin(login);
         employee.setEmail(login + "@mera.ru");
-        employee.setPassword(Util.createPasswordHash("MD5", Util.BASE64_ENCODING, null, null, "dlobanov"));
+        employee.setPassword(Util.createPasswordHash("SHA-256", Util.BASE64_ENCODING, null, null, "dlobanov"));
         employee.setName(login);
         employee.setUnit(unit);
         entityManager.persist(employee);

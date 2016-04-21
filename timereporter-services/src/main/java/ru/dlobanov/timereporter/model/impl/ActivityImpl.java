@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(schema = "public", name = "activity")
+@Table(schema = "timereporter", name = "activity")
 public class ActivityImpl implements Activity {
 
     public enum ActivityType {

@@ -1,6 +1,9 @@
 package ru.dlobanov.timereporter;
 
-import ru.dlobanov.timereporter.model.*;
+import ru.dlobanov.timereporter.model.Employee;
+import ru.dlobanov.timereporter.model.EmployeeRole;
+import ru.dlobanov.timereporter.model.OrgUnit;
+import ru.dlobanov.timereporter.model.Project;
 
 import java.util.List;
 

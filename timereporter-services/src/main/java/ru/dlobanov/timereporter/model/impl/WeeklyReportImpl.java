@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(schema = "public", name = "report")
+@Table(schema = "timereporter", name = "report")
 public class WeeklyReportImpl implements WeeklyReport, Serializable {
     
     private static final long serialVersionUID = 1L;
