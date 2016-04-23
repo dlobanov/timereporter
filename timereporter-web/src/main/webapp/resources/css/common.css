@@ -52,3 +52,9 @@ body {
 	text-align: right;
 	margin-top: 4px;
 }
+
+.login_form {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}

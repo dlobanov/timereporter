@@ -1,29 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Time Reporter</title>
 </h:head>
 <body bgcolor="#F8F8F8">
-	<form action="j_security_check" method="post" style="position: absolute; top: 40%; left: 40%">
-		<table border="1" style="text-align: center;">
-			<tbody>
-				<tr>
-					<td colspan="2">#{bundle['login.formname']}</td>
-				</tr>
-				<tr>
-					<td>#{bundle['login.username']}:</td>
-					<td><input type="text" name="j_username"/></td>
-				</tr>
-				<tr>
-					<td>#{bundle['login.password']}:</td>
-					<td><input type="password" name="j_password" /></td>
-				</tr>
-				<tr>
-					<td colspan="2" style="text-align: center;"><input type="submit" value="#{bundle['login.submit']}" /></td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
+<form action="j_security_check" method="post" style="position: absolute; top: 40%; left: 40%">
+    <table border="1" style="text-align: center;">
+        <tbody>
+        <tr>
+            <td colspan="2">#{bundle['login.formname']}</td>
+        </tr>
+        <tr>
+            <td>#{bundle['login.username']}:</td>
+            <td><input type="text" name="j_username"/></td>
+        </tr>
+        <tr>
+            <td>#{bundle['login.password']}:</td>
+            <td><input type="password" name="j_password"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;"><input type="submit" value="#{bundle['login.submit']}"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
 </body>
 </html>

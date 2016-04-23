@@ -36,7 +36,7 @@ public class Installer {
         EmployeeRoleImpl unitManager = findOrCreateRole("UnitManager");
         EmployeeRoleImpl projectManager = findOrCreateRole("ProjectManager");
         EmployeeImpl worker = findOrCreateEmployee("dlobanov", unit);
-        worker.addRole(simpleWorker);
+        worker.addRole(projectManager);
         entityManager.persist(worker);
     }
 

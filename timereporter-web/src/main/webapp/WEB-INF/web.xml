@@ -1,75 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
-	<welcome-file-list>
-		<welcome-file>faces/home.xhtml</welcome-file>
-	</welcome-file-list>
+         id="WebApp_ID" version="2.5">
+    <welcome-file-list>
+        <welcome-file>faces/home.xhtml</welcome-file>
+    </welcome-file-list>
 
-	<context-param>
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Development</param-value>
-	</context-param>
-	<context-param>
-		<param-name>javax.faces.CONFIG_FILES</param-name>
-		<param-value>/WEB-INF/faces-config.xml</param-value>
-	</context-param>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/WEB-INF/faces-config.xml</param-value>
+    </context-param>
 
-	<servlet>
-		<servlet-name>Faces Servlet</servlet-name>
-		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>/faces/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.jsf</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.faces</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.xhtml</url-pattern>
-	</servlet-mapping>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.faces</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
 
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<realm-name>jdbcRealm</realm-name>
-		<form-login-config>
-		    <form-login-page>/login.xhtml</form-login-page>
-			<form-error-page>/error.xhtml</form-error-page>
-		</form-login-config>
-	</login-config>
-	<security-role>
-		<description>Simple worker</description>
-		<role-name>SimpleWorker</role-name>
-	</security-role>
-	<security-role>
-		<description>Unit manager</description>
-		<role-name>UnitManager</role-name>
-	</security-role>
-	<security-role>
-		<description>Project manager</description>
-		<role-name>ProjectManager</role-name>
-	</security-role>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>jdbcRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/error.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <role-name>SimpleWorker</role-name>
+    </security-role>
+    <security-role>
+        <role-name>UnitManager</role-name>
+    </security-role>
+    <security-role>
+        <role-name>ProjectManager</role-name>
+    </security-role>
 
-	<security-constraint>
-		<display-name>Secured Login</display-name>
-		<web-resource-collection>
-			<web-resource-name>wrcoll</web-resource-name>
-			<description/>
-			<url-pattern>/*</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<description />
-			<role-name>SimpleWorker</role-name>
-		</auth-constraint>
-	</security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>All resources</web-resource-name>
+            <description/>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>SimpleWorker</role-name>
+            <role-name>UnitManager</role-name>
+            <role-name>ProjectManager</role-name>
+        </auth-constraint>
+    </security-constraint>
 </web-app>
