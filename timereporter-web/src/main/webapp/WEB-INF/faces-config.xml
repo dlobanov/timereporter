@@ -3,21 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
 	version="2.0">
-	<navigation-rule>
-		<from-view-id>home.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{navigationController.processPage1}</from-action>
-			<from-outcome>page</from-outcome>
-			<to-view-id>page1.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-action>#{navigationController.processPage2}</from-action>
-			<from-outcome>page</from-outcome>
-			<to-view-id>page2.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
 
-	<application>
+    <application>
 		<locale-config>
 			<support>ru</support>
 			<default-locale>en</default-locale>
@@ -26,5 +13,6 @@
 			<base-name>ru.dlobanov.timereporter.bundle</base-name>
 			<var>bundle</var>
 		</resource-bundle>
+        <message-bundle>ValidationMessages</message-bundle>
 	</application>
 </faces-config>

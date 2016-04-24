@@ -1,17 +1,24 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
 <body>
-	<ui:composition>
-		<table>
-			<tbody>
-				<tr>
-					<td rowspan="2"><img src="#{resource['images/logo.jpg']}" width="200px" height="94px"/></td>
-					<td><h3 class="header_text">TimeReporter web app</h3></td>
-				</tr>
-				<tr>
-					<td><h5 class="header_text">#{userData.project}/#{userData.unit} : #{userData.username} [#{userData.roles}]</h5></td>
-				</tr>
-			</tbody>
-		</table>
-	</ui:composition>
+<ui:composition>
+    <table>
+        <tbody>
+        <tr>
+            <td rowspan="2"><img src="#{resource['images/logo.jpg']}" width="200px" height="94px"/></td>
+            <td><h3 class="header_text">TimeReporter web app</h3></td>
+        </tr>
+        <tr>
+            <td>
+                <h5 class="header_text">#{userData.project}/#{userData.unit} : #{userData.username} [#{userData.roles}]</h5>
+            </td>
+            <td>
+                <h:form><h:commandLink value="Logout" action="login" actionListener="#{request.logout}"/></h:form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</ui:composition>
 </body>
 </html>

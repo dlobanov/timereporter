@@ -12,6 +12,7 @@ import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ManagedBean
 public class ProjectController implements Serializable {
@@ -25,12 +26,7 @@ public class ProjectController implements Serializable {
     }
     
     public List<ProjectBean> getProjects() {
-        List<Project> projects = orgStructureService.getProjects();
-        List<ProjectBean> result = new ArrayList<ProjectBean>(projects.size());
-        for (Project project : projects) {
-            result.add(new ProjectBean(project.getAlias(), project.getName(), project.getDescription()));
-        }
-        return result;
+        return orgStructureService.getProjects().stream().map(ProjectBean::new).collect(Collectors.toList());
     }
     
     public List<Employee> getEmployees() {

@@ -15,8 +15,6 @@ ear {
     }
 }
 
-
-
 task autodeploy(type: Copy, dependsOn: build) {
     from 'build/libs'
     into wildflyAutodeployDirProp

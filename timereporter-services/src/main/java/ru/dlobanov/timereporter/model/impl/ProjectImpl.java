@@ -1,5 +1,6 @@
 package ru.dlobanov.timereporter.model.impl;
 
+import ru.dlobanov.timereporter.model.Employee;
 import ru.dlobanov.timereporter.model.Project;
 
 import javax.persistence.*;
@@ -8,22 +9,21 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(schema = "timereporter", name = "project")
 public class ProjectImpl implements Project, Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
-    @Size(min = 1, max = 32, message = "Alias length should be [min = 1, max = 32]")
+    @Size(min = 1, max = 32, message = "Alias length should be [min = {min}, max = {max}]")
     private String alias;
 
     @NotNull
-    @Size(min = 1, max = 255, message = "Name length should be [min = 1, max = 255]")
+    @Size(min = 1, max = 255, message = "Name length should be [min = {min}, max = {max}]")
     private String name;
 
-    @Size(max = 4000, message = "Description max lenght is 4000 characters")
+    @Size(max = 4000, message = "Description max length is {max} characters")
     private String description;
     
     @OneToOne
@@ -32,16 +32,24 @@ public class ProjectImpl implements Project, Serializable {
     @OneToMany(cascade=CascadeType.ALL, mappedBy="project")
     private List<OrgUnitImpl> units;
 
+    @Override
     public String getAlias() {
         return alias;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public Optional<Employee> getManager() {
+        return Optional.ofNullable(manager);
     }
 
     public List<OrgUnitImpl> getUnits() {
@@ -60,23 +68,20 @@ public class ProjectImpl implements Project, Serializable {
         this.description = description;
     }
 
+    public void setManager(EmployeeImpl manager) {
+        this.manager = manager;
+    }
+
     public void setUnits(List<OrgUnitImpl> units) {
         this.units = units;
     }
 
     public void addUnit(OrgUnitImpl unit) {
         if (units == null) {
-            units = new ArrayList<OrgUnitImpl>();
+            units = new ArrayList<>();
         }
         units.add(unit);
         unit.setProject(this);
     }
-    
-    public EmployeeImpl getManager() {
-        return manager;
-    }
-    
-    public void setManager(EmployeeImpl manager) {
-        this.manager = manager;
-    }
+
 }

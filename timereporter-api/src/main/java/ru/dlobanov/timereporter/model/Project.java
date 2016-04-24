@@ -1,11 +1,14 @@
 package ru.dlobanov.timereporter.model;
 
+import java.util.Optional;
+
 public interface Project {
+
     String getName();
 
     String getAlias();
 
     String getDescription();
 
-    Employee getManager();
+    Optional<Employee> getManager();
 }

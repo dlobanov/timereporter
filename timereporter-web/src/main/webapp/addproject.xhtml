@@ -9,21 +9,36 @@
     <ui:composition template="/templates/common.xhtml">
         <ui:define name="content">
             <h:form>
-                <h:message for="Project creation" style="color:red;"/>
-                <h:panelGrid columns="2" id="loginPanel">
-                    Name : <h:inputText id="name" value="#{projectBean.name}"/>
-                    Alias : <h:inputText id="alias" value="#{projectBean.alias}"/>
-                    Description : <h:inputText id="description" value="#{projectBean.description}"/>
-                    Manager :
-                    <h:selectOneMenu id="manager" value="#{projectBean.manager}">
-                        <f:selectItems value="#{projectController.employees}" var="e" itemLabel="#{e.name}"
-                                       itemValue="#{e.login}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandButton value="Create project" action="administration"
-                                 actionListener="#{projectController.createOrUpdateProject}"/>
+                <fieldset>
+                    <legend>Create project</legend>
+                    <h:panelGrid columns="3">
+
+                        <h:outputLabel for="name" styleClass="form-label">Name</h:outputLabel>
+                        <h:inputText id="name" styleClass="form-field" value="#{projectBean.name}"/>
+                        <h:message for="name" errorClass="error-message"/>
+
+                        <h:outputLabel for="alias" styleClass="form-label">Alias</h:outputLabel>
+                        <h:inputText id="alias" styleClass="form-field" value="#{projectBean.alias}"/>
+                        <h:message for="alias" errorClass="error-message"/>
+
+                        <h:outputLabel for="description" styleClass="form-label">Description</h:outputLabel>
+                        <h:inputTextarea id="description" styleClass="form-field" value="#{projectBean.description}"/>
+                        <h:message for="description" errorClass="error-message"/>
+
+                        <h:outputLabel for="manager" styleClass="form-label"                                                                                                                                                                                                                                                                    >Manager</h:outputLabel>
+                        <h:selectOneMenu id="manager" styleClass="form-field" value="#{projectBean.manager}">
+                            <f:selectItems value="#{projectController.employees}" var="e" itemLabel="#{e.name}"
+                                           itemValue="#{e.login}"/>
+                        </h:selectOneMenu>
+                        <h:message for="manager" errorClass="error-message"/>
+
+                    </h:panelGrid>
+                    <h:commandButton value="Create project" action="viewprojects"
+                                     actionListener="#{projectController.createOrUpdateProject}"/>
+                </fieldset>
             </h:form>
         </ui:define>
     </ui:composition>
 </h:body>
 </html>
+

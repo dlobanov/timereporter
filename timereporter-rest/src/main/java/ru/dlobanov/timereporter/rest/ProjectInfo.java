@@ -1,5 +1,6 @@
 package ru.dlobanov.timereporter.rest;
 
+import ru.dlobanov.timereporter.model.Employee;
 import ru.dlobanov.timereporter.model.Project;
 
 public class ProjectInfo {
@@ -16,6 +17,6 @@ public class ProjectInfo {
         this.name = project.getName();
         this.alias = project.getAlias();
         this.description = project.getDescription();
-        this.manager = project.getManager() != null ? project.getManager().getName() : "None";
+        this.manager = project.getManager().map(Employee::getName).orElse("None");
     }
 }

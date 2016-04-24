@@ -26,7 +26,7 @@ public class ProjectResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"SimpleWorker1"})
+    @RolesAllowed({"ProjectManager"})
     public Response getProjects(@Context SecurityContext securityContext, @Context HttpServletRequest httpServletRequest) {
         ProjectInfos projects = fromProjects(orgStructureService.getProjects());
         return Response.ok(projects).build();
