@@ -3,30 +3,30 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <link rel="stylesheet" href="#{resource['css/common.css']}"/>
-	<link rel="favicon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
+    <link rel="favicon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
     <meta charset="UTF-8"/>
     <title>Time Reporter</title>
 </h:head>
 <h:body>
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/templates/header.xhtml"/>
-		</ui:insert>
-	</div>
-	<div id="menu">
-		<ui:insert name="menu">
-			<ui:include src="/templates/menu.xhtml" />
-		</ui:insert>
-	</div>
-	<div id="content">
-		<ui:insert name="content">
-			<ui:include src="/templates/content.xhtml" />
-		</ui:insert>
-	</div>
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="/templates/footer.xhtml" />
-		</ui:insert>
-	</div>
+    <div id="header">
+        <ui:insert name="header">
+            <ui:include src="/templates/header.xhtml"/>
+        </ui:insert>
+    </div>
+    <div id="menu">
+        <ui:insert name="menu">
+            <ui:include src="/templates/menu.xhtml"/>
+        </ui:insert>
+    </div>
+    <div id="content">
+        <ui:insert name="content">
+            <ui:include src="/templates/content.xhtml"/>
+        </ui:insert>
+    </div>
+    <div id="footer">
+        <ui:insert name="footer">
+            <ui:include src="/templates/footer.xhtml"/>
+        </ui:insert>
+    </div>
 </h:body>
 </html>
