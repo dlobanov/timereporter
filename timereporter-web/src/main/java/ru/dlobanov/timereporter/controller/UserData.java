@@ -5,14 +5,16 @@ import ru.dlobanov.timereporter.model.Employee;
 import ru.dlobanov.timereporter.model.EmployeeRole;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.security.Principal;
 import java.util.Iterator;
 import java.util.List;
 
-@ManagedBean
+@Named
 public class UserData implements Serializable {
     
     private Principal userPrincipal;

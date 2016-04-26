@@ -9,9 +9,7 @@ import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,6 +28,15 @@ public class ProjectResource {
     public Response getProjects(@Context SecurityContext securityContext, @Context HttpServletRequest httpServletRequest) {
         ProjectInfos projects = fromProjects(orgStructureService.getProjects());
         return Response.ok(projects).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ProjectManager"})
+    public Response createProject(ProjectInfo info) {
+        Project created = orgStructureService.createOrUpdateProject(info.alias, info.name, info.description, info.manager);
+        return Response.status(Response.Status.CREATED).entity(new ProjectInfo(created)).build();
     }
 
     private ProjectInfos fromProjects(List<Project> projects) {

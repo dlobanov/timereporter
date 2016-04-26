@@ -1,5 +1,6 @@
 # timereporter
 java ee training
+https://docs.oracle.com/javaee/7/JEETT.pdf
 
 * Download postgres from http://www.enterprisedb.com/products-services-training/pgdownload#windows
 * Install it for user postgres, password - postgres, port 5432

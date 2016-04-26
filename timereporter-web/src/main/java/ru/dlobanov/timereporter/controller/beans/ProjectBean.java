@@ -6,13 +6,16 @@ import ru.dlobanov.timereporter.model.Project;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-@ManagedBean
+@Named
 public class ProjectBean implements Serializable {
 
     @NotNull(message = "{field.required}")

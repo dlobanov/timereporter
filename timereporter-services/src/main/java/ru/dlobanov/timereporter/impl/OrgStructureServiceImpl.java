@@ -10,6 +10,8 @@ import ru.dlobanov.timereporter.model.impl.OrgUnitImpl;
 import ru.dlobanov.timereporter.model.impl.ProjectImpl;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -20,6 +22,7 @@ public class OrgStructureServiceImpl implements OrgStructureService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public Project createOrUpdateProject(String alias, String name, String description, String manager) {
         ProjectImpl project = entityManager.find(ProjectImpl.class, alias);
         if (project == null) {
