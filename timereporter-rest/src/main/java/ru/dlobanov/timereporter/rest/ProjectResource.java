@@ -1,11 +1,8 @@
 package ru.dlobanov.timereporter.rest;
 
-import ru.dlobanov.timereporter.OrgStructureService;
-import ru.dlobanov.timereporter.model.EmployeeRole;
+import ru.dlobanov.timereporter.ProjectService;
 import ru.dlobanov.timereporter.model.Project;
 
-import javax.annotation.security.DenyAll;
-import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
@@ -20,13 +17,13 @@ import java.util.List;
 public class ProjectResource {
 
     @EJB
-    private OrgStructureService orgStructureService;
+    private ProjectService projectService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"ProjectManager"})
     public Response getProjects(@Context SecurityContext securityContext, @Context HttpServletRequest httpServletRequest) {
-        ProjectInfos projects = fromProjects(orgStructureService.getProjects());
+        ProjectInfos projects = fromProjects(projectService.getProjects());
         return Response.ok(projects).build();
     }
 
@@ -35,7 +32,7 @@ public class ProjectResource {
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"ProjectManager"})
     public Response createProject(ProjectInfo info) {
-        Project created = orgStructureService.createOrUpdateProject(info.alias, info.name, info.description, info.manager);
+        Project created = projectService.createOrUpdateProject(info.alias, info.name, info.description, info.manager);
         return Response.status(Response.Status.CREATED).entity(new ProjectInfo(created)).build();
     }
 

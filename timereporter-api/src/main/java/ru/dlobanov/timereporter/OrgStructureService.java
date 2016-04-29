@@ -9,13 +9,7 @@ import java.util.List;
 
 public interface OrgStructureService {
 
-    Project createOrUpdateProject(String alias, String name, String description, String manager);
-
     OrgUnit createNewUnit(String name, String description, Project project);
-
-    List<Project> getProjects();
-
-    Project getProject(String alias);
 
     List<OrgUnit> getUnits(Project project);
 

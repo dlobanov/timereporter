@@ -1,6 +1,8 @@
 package ru.dlobanov.timereporter.impl;
 
 import ru.dlobanov.timereporter.OrgStructureService;
+import ru.dlobanov.timereporter.ProjectDeletionEvent;
+import ru.dlobanov.timereporter.ProjectService;
 import ru.dlobanov.timereporter.model.Employee;
 import ru.dlobanov.timereporter.model.EmployeeRole;
 import ru.dlobanov.timereporter.model.OrgUnit;
@@ -9,20 +11,24 @@ import ru.dlobanov.timereporter.model.impl.EmployeeImpl;
 import ru.dlobanov.timereporter.model.impl.OrgUnitImpl;
 import ru.dlobanov.timereporter.model.impl.ProjectImpl;
 
+import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
-public class OrgStructureServiceImpl implements OrgStructureService {
+public class OrgStructureServiceImpl implements OrgStructureService, ProjectService {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    @Inject
+    private Event<ProjectDeletionEvent> projectDeletionEventEvent;
+
+    @Override
     public Project createOrUpdateProject(String alias, String name, String description, String manager) {
         ProjectImpl project = entityManager.find(ProjectImpl.class, alias);
         if (project == null) {
@@ -34,6 +40,21 @@ public class OrgStructureServiceImpl implements OrgStructureService {
         project.setManager(manager == null ? null : entityManager.find(EmployeeImpl.class, manager));
         entityManager.persist(project);
         return project;
+    }
+
+    @Asynchronous
+    @Override
+    public void deleteProject(Project project) {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+
+        }
+        ProjectImpl projectImpl = entityManager.find(ProjectImpl.class, project.getAlias());
+        if (projectImpl != null) {
+            projectDeletionEventEvent.fire(new ProjectDeletionEvent(projectImpl));
+            entityManager.remove(projectImpl);
+        }
     }
 
     public OrgUnit createNewUnit(String name, String description, ProjectImpl project) {
@@ -98,4 +119,6 @@ public class OrgStructureServiceImpl implements OrgStructureService {
     public OrgUnit createNewUnit(String name, String description, Project project) {
         return null;
     }
+
+
 }

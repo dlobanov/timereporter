@@ -23,11 +23,11 @@ public class OrgUnitImpl implements OrgUnit, Serializable {
 
     @OneToOne
     private EmployeeImpl manager;
-    
+
     @ManyToOne
     private ProjectImpl project;
     
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "unit")
+    @OneToMany(mappedBy = "unit")
     private List<EmployeeImpl> employees;
 
     public String getName() {

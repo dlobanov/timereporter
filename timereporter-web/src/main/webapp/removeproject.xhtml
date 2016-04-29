@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Remove project</title>
+</h:head>
+<h:body>
+    <ui:composition template="/templates/common.xhtml">
+        <ui:define name="content">
+            Are you about to remove project: #{projectBean.alias}/#{projectBean.name} ?
+            <h:form>
+                <h:inputHidden value="#{projectBean.alias}"/>
+                <h:panelGrid columns="2" id="loginPanel">
+                    Alias : <h:outputText id="alias" disabled="true" value="#{projectBean.alias}"/>
+                    Name : <h:outputText id="name" value="#{projectBean.name}" />
+                    Description : <h:outputText id="description" value="#{projectBean.description}" />
+                    Manager :<h:outputText id="manager" value="#{projectBean.manager}" />
+                </h:panelGrid>
+                <h:commandButton value="Remove project" action="#{projectController.remove}"/>
+            </h:form>
+            <h:messages errorClass="error-message"/>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

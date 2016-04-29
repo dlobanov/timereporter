@@ -1,21 +1,20 @@
 package ru.dlobanov.timereporter.controller.beans;
 
-import ru.dlobanov.timereporter.OrgStructureService;
+import ru.dlobanov.timereporter.ProjectService;
 import ru.dlobanov.timereporter.model.Employee;
 import ru.dlobanov.timereporter.model.Project;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-@Named
+@Named("projectBean")
+@RequestScoped
 public class ProjectBean implements Serializable {
 
     @NotNull(message = "{field.required}")
@@ -32,8 +31,8 @@ public class ProjectBean implements Serializable {
     @NotNull(message = "{field.required}")
     private String manager;
     
-    @EJB
-    private OrgStructureService orgStructureService;
+    @Inject
+    private ProjectService orgStructureService;
     
     @PostConstruct
     public void init() {
@@ -66,31 +65,31 @@ public class ProjectBean implements Serializable {
     public String getAlias() {
         return alias;
     }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public String getDescription() {
-        return description;
-    }
-    
+
     public void setAlias(String alias) {
         this.alias = alias;
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public String getManager() {
         return manager;
     }
-    
+
     public void setManager(String manager) {
         this.manager = manager;
     }

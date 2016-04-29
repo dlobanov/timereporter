@@ -31,6 +31,7 @@ public class Installer {
 
     private void init() {
         ProjectImpl project = findOrCreateProject("ALU", "Alcatel");
+        findOrCreateProject("Elster", "Elster/Jupiter");
         OrgUnitImpl unit = findOrCreateUnit("WPS", project);
         EmployeeRoleImpl simpleWorker = findOrCreateRole("SimpleWorker");
         EmployeeRoleImpl unitManager = findOrCreateRole("UnitManager");
@@ -90,4 +91,5 @@ public class Installer {
         entityManager.persist(project);
         return project;
     }
+
 }

@@ -1,5 +1,6 @@
 package ru.dlobanov.timereporter.model;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface Project {
@@ -11,4 +12,6 @@ public interface Project {
     String getDescription();
 
     Optional<Employee> getManager();
+
+    List<? extends OrgUnit> getUnits();
 }

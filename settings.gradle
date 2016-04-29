@@ -1,1 +1,1 @@
-include 'timereporter-api', 'timereporter-services', 'timereporter-web', 'timereporter-rest'
+include 'timereporter-api', 'timereporter-services', 'timereporter-web', 'timereporter-rest', 'timereporter-ws'

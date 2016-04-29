@@ -8,7 +8,7 @@
 <h:body>
     <ui:composition template="/templates/common.xhtml">
         <ui:define name="content">
-            <h2>All projects in the system</h2>
+            <h2>Projects</h2>
             <h:dataTable value="#{projectController.projects}" var="project" styleClass="projectTable"
                          headerClass="projectTableHeader" rowClasses="projectTableOddRow,projectTableEvenRow">
                 <h:column>
@@ -24,8 +24,9 @@
                     #{project.description}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Edit</f:facet>
+                    <f:facet name="header">Action</f:facet>
                     <h:button outcome="/editproject?project=#{project.alias}" value="Edit"/>
+                    <h:button outcome="/removeproject?project=#{project.alias}" value="Remove"/>
                 </h:column>
             </h:dataTable>
         </ui:define>

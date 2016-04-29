@@ -3,6 +3,7 @@ apply plugin: 'ear'
 dependencies {
     deploy project(path: ':timereporter-web', configuration: 'archives')
     deploy project(path: ':timereporter-rest', configuration: 'archives')
+    deploy project(path: ':timereporter-ws', configuration: 'archives')
     deploy project(path: ':timereporter-services', configuration: 'archives')
     earlib project(path: ':timereporter-api', configuration: 'archives')
 }

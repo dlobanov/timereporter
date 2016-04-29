@@ -1,6 +1,7 @@
 package ru.dlobanov.timereporter.model.impl;
 
 import ru.dlobanov.timereporter.model.Employee;
+import ru.dlobanov.timereporter.model.OrgUnit;
 import ru.dlobanov.timereporter.model.Project;
 
 import javax.persistence.*;
@@ -25,11 +26,12 @@ public class ProjectImpl implements Project, Serializable {
 
     @Size(max = 4000, message = "Description max length is {max} characters")
     private String description;
-    
-    @OneToOne
+
+    @OneToOne(optional = true, cascade = CascadeType.DETACH)
+    @JoinColumn(name = "manager")
     private EmployeeImpl manager;
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="project")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<OrgUnitImpl> units;
 
     @Override
@@ -52,7 +54,8 @@ public class ProjectImpl implements Project, Serializable {
         return Optional.ofNullable(manager);
     }
 
-    public List<OrgUnitImpl> getUnits() {
+    @Override
+    public List<? extends OrgUnit> getUnits() {
         return units;
     }
 
